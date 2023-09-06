@@ -1,42 +1,67 @@
-# Hello World with React boilerplate
+# 4geeks academy project - a notebook style todo list with React and Bootstrap
 
-Start coding a react application
+![gif](https://github.com/vanesascode/blog-node-express-ejs-mdbatlas-mvc/assets/131259155/51fca67f-b662-4d91-8f95-159b35d6704b)
 
-> If you are working locally instead of using codespaces or gitpod, please follow [local installation steps](#local-installation-skip-if-you-are-working-on-codespaces-or-gitpod) and come back to this part of the readme.
+We were asked to add a handwritten notebook style, so it was a good CSS exercise. 
 
-## How to start coding?
+***
 
-- Install the packages with `$ npm install`.
-- Run the webpack server with `$ npm run start`
+Since Bootstrap is quite limited for this, I added some useful styles it has, but I built the rest with CSS:
 
-You can update the `styles/index.css` or `js/index.js` depending on your needs.
-Add more files into your, `./src/js/components` or styles folder as you need them.
+🔹 Made use of `relative` and `absolute` display properties, along with the `z-index` property, to create the notebook pages effect.
 
-## Local Installation (skip if you are working on codespaces or gitpod)
+🔹 Another good learning for me was the one of more complex `selectors`:
 
-Download the boilerplate using git
+``
+.item-box:hover button {
+ 	 color: rgb(206, 200, 200);
+}
+``
 
-```
-$ git clone https://github.com/4GeeksAcademy/react-hello.git
-$ cd react-hello
-```
+In the previous example, I could hover over the list card and the button appeared. So, the CSS selector targets a button element within a hovered item-box element. When the item-box element is hovered over by the user, the color of the button text will be changed.
 
-## Publish your website!
+🔹 Other interesting ones that our Bootcamp teacher showed me was: 
 
-This boilerplate is 100% compatible with the free [github pages](https://pages.github.com/) and [vercel](https://vercel.com/) hosting.
+``
+.item-box:hover div > button {
+color: rgb(206, 200, 200);
+}
+``
 
-It takes just 2 minutes to deploy, [click here to start the process](https://github.com/4GeeksAcademy/react-hello/blob/master/docs/DEPLOY.md).
+This is a CSS selector that targets a button element that is a `direct child of a div` element, which itself is a descendant of a hovered item-box element. When the item-box element is hovered over by the user, the color of the button text will be changed.
 
-## Other features
+And you can add as many parents as you like! 
 
-- Automatic Code Formatting: Use of [Prettier](https://prettier.io/) for automatic code indentation and formatting.
-- Error reporting: Use of [eslint](https://eslint.org/) for better error reporting.
-- Hot Deploy: Use of [Webpack Development Server](https://webpack.js.org/configuration/dev-server/) for hot deploy and live reload.
-- One-command publish of the code to github pages with `npm run deploy:github`.
-- Babel 7 (really fast).
+``
+.item-box:hover div > div > button {
+color: rgb(206, 200, 200);
+}
+``
 
-### Contributors
+Another tip, was to see how to add style to the placeholder: 
 
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
+``
+input::placeholder {
+  color: rgb(206, 200, 200);
+}
+``
 
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+# UPDATES: 
+
+In this updated code, the addTodo function now checks if the todoInput is not empty or just whitespace before adding a new item to the todos state. It uses the trim method to remove leading and trailing whitespace from the input string. If the input is not empty, the new item is added to the todos state array using the spread operator. If the input is empty, no item is added.
+
+``
+if (todoInput.trim() !== "") {
+      setTodos([...todos, todoInput]);
+      setTodoInput("");
+    }
+``
+
+Also, to handle the pluralization of the word "item" based on the number of items in the list we use the following: 
+
+``
+  if (todoInput.trim() !== "") {
+  ...
+  }
+``
+
